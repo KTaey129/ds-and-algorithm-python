@@ -19,3 +19,5 @@ def sortStack (stack: List[int], ascending: bool = True) -> List[int]:
     tmpStack.append(num)
 
   return tmpStack
+
+# Using Recursion

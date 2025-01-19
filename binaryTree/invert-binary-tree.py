@@ -6,7 +6,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution:
+class Solution_iterative:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         stack = [root]
 
@@ -17,4 +17,10 @@ class Solution:
                 curr.left, curr.right = curr.right, curr.left
                 stack.extend([curr.left, curr.right])
 
+        return root
+
+class Solution_recursive:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root:
+            root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
         return root

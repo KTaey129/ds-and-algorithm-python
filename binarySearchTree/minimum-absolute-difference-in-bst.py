@@ -16,7 +16,7 @@ class Solution:
                 root = root.left
             else:
                 root = stack.pop()
-                mid_diff = min(min_diff, root.val - pre_val)
+                min_diff = min(min_diff, root.val - prev_val)
                 prev_val = root.val
                 root = root.right
 

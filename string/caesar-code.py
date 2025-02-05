@@ -21,3 +21,14 @@ def solution(s: str, n: int) -> str:
     
     
     return ''.join(answer)
+
+def solution2(s: str, n: int) -> str:
+    s = list(s)
+    for i in range(len(s)):
+        if s[i] == ' ': 
+            continue
+        corr = ord('A') if s[i].isupper() else ord('a')
+        s[i] = chr((ord(s[i]) - corr + n) % 26 + corr)
+    
+    
+    return ''.join(s)

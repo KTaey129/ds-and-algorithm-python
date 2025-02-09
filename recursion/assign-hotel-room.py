@@ -1,11 +1,11 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/64063
 
-from typing import List 
+from typing import List, Dict
 import sys
 
 sys.setrecursionlimit(2000)
 
-def find_emptyroom(chk: int, rooms: List[int]) -> List[int]:
+def find_emptyroom(chk: int, rooms: Dict[int, int]) -> int:
     if chk not in rooms:
         rooms[chk] = chk + 1
         return chk
@@ -18,6 +18,10 @@ def solution(k: int, room_number: List[int]) -> List[int]:
     for num in room_number:
         chk_in = find_emptyroom(num, rooms)
     return list(rooms)
+
+# We use Union-Find (Disjoint Set Union, DSU) with path compression to efficiently track and assign rooms.
+# Union-Find: A data structure that groups elements into disjoint sets and quickly finds which set an element belongs to.
+# Path Compression: Optimizes Union-Find by linking nodes directly to their root, making future lookups faster.
 
 
 def solution(k, room_number):
@@ -32,3 +36,5 @@ def solution(k, room_number):
         ret.append(n)
         for j in visit: room_dic[j] = n + 1
     return ret
+
+

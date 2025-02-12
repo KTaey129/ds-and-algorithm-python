@@ -1,13 +1,14 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/64064
 
-from typing import List
+from typing import List, Set
 import re
 from itertools import permutations
 
-def search(idx, visit, userId, answer, banPatterns):
+def search(idx: int, visit: int, userId: List[str], answer: Set[int], banPatterns: List[str]) -> None:
     if idx == len(banPatterns):
         answer.add(visit)
         return
+    
     for i in range(len(userId)):
         if (visit & (1 << i)) > 0 or not re.fullmatch(banPatterns[idx], userId[i]):
             continue

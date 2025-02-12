@@ -2,6 +2,7 @@
 
 from typing import List
 import re
+from itertools import permutations
 
 def search(idx, visit, userId, answer, banPatterns):
     if idx == len(banPatterns):
@@ -19,3 +20,13 @@ def solution(userId: List[str], bannedId: List[str]) -> int:
     
     return len(answer)
 
+
+
+def solution2(userId: List[str], bannedId: List[str]) -> int:
+    answer = set()
+    banned = ' '.join(bannedId).replace('*', '.')
+    for i in permutations(userId, len(bannedId)):
+        if re.fullmatch(banned, ' '.join(i)):
+            answer.add(''.join(sorted(i)))
+            
+    return len(answer)

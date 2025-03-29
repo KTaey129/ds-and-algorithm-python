@@ -2,11 +2,11 @@
 
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
-        dict = {}
+        dic = {}
         for i, v in enumerate(nums):
-            if v in dict and i - dict[v] <= k:
+            if v in dic and i - dic[v] <= k:
                 return True
-            dict[v] = i
+            dic[v] = i
         return False
 
   def containsNearbyDuplicate2(self, nums: List[int], k: int) -> bool:
